@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GapLift</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    /* ── Marketing Section ──────────────────────────────────── */
+    .marketing-section {
+      font-family: 'DM Sans', sans-serif;
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0 24px 40px;
+    }
+
+    .ms-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1.5px solid #e4e0d8;
+      overflow: hidden;
+    }
+
+    .ms-top-accent {
+      height: 5px;
+      background: linear-gradient(90deg, #1d9e75 0%, #ffd166 100%);
+    }
+
+    .ms-main {
+      padding: 44px 44px 32px;
+    }
+
+    .ms-tag-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .ms-tag {
+      background: #eef6f2;
+      border: 1px solid #b5dece;
+      color: #0f6e56;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .ms-tag-line {
+      flex: 1;
+      height: 1px;
+      background: #e4e0d8;
+    }
+
+    .ms-headline {
+      font-family: 'DM Serif Display', serif;
+      font-size: 38px;
+      line-height: 1.08;
+      color: #1a1208;
+      margin-bottom: 14px;
+    }
+
+    .ms-headline .ms-hl { color: #1d9e75; }
+    .ms-headline em { font-style: italic; color: #6b6050; }
+
+    .ms-deck {
+      font-size: 14px;
+      font-weight: 300;
+      color: #6b6050;
+      line-height: 1.72;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+
+    .ms-deck strong {
+      font-weight: 600;
+      color: #1a1208;
+    }
+
+    .ms-usp-banner {
+      background: #1a1208;
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ms-usp-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: rgba(255, 209, 102, 0.12);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ms-usp-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #c9922a;
+      margin-bottom: 5px;
+    }
+
+    .ms-usp-line {
+      font-family: 'DM Serif Display', serif;
+      font-size: 20px;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .ms-usp-line em {
+      font-style: italic;
+      color: #ffd166;
+    }
+
+    .ms-steps-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #a09070;
+      margin-bottom: 16px;
+    }
+
+    .ms-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    .ms-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid #f0ece4;
+    }
+
+    .ms-step:last-child {
+      border-bottom: none;
+      background: #f7f4ef;
+      margin: 0 -44px;
+      padding: 20px 44px;
+    }
+
+    .ms-step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1.5px solid #ddd8cc;
+      color: #a09070;
+      margin-top: 1px;
+    }
+
+    .ms-step:last-child .ms-step-num {
+      background: #1a1208;
+      border-color: #1a1208;
+      color: #ffd166;
+    }
+
+    .ms-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1208;
+      margin-bottom: 3px;
+    }
+
+    .ms-step-desc {
+      font-size: 12px;
+      font-weight: 300;
+      color: #8a7a68;
+      line-height: 1.55;
+    }
+
+    .ms-step:last-child .ms-step-desc {
+      color: #5a4e3e;
+      font-weight: 400;
+    }
+
+    .ms-step-tag {
+      display: inline-block;
+      margin-top: 8px;
+      background: #1a1208;
+      color: #ffd166;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .ms-bottom-bar {
+      background: #1d9e75;
+      padding: 22px 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .ms-bottom-left {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      color: #fff;
+      line-height: 1.35;
+    }
+
+    .ms-bottom-left em { font-style: italic; }
+
+    .ms-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      background: #1d9e75;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .ms-cta-btn:hover {
+      background: #177a5c;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+
+    /* ── Marketing: tablet ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .marketing-section { padding: 0 16px 32px; }
+      .ms-main { padding: 32px 28px 24px; }
+      .ms-headline { font-size: 30px; }
+    }
+
+    /* ── Marketing: mobile ──────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .ms-main { padding: 24px 20px 20px; }
+      .ms-headline { font-size: 24px; }
+      .ms-deck { font-size: 13px; }
+      .ms-step:last-child { margin: 0 -20px; padding: 16px 20px; }
+      .ms-bottom-bar { padding: 18px 20px; flex-direction: column; align-items: flex-start; gap: 14px; }
+      .ms-cta-btn { width: 100%; justify-content: center; }
+      .ms-usp-banner { padding: 16px 18px; gap: 12px; }
+      .ms-usp-line { font-size: 17px; }
+    }
+
+    /* ── Resume version tabs ───────────────────────────────────── */
+    /* ── Section label above tabs ───────────────────────────────── */
+    .rv-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #7a8899;
+      margin-bottom: 10px;
+    }
+
+    /* ── Tab bar ─────────────────────────────────────────────────── */
+    .rv-tabs-bar {
+      display: flex;
+      border-bottom: 2px solid #e2e8f0;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .rv-tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748b;
+      background: #f5f7fa;
+      border: none;
+      border-bottom: 2.5px solid transparent;
+      margin-bottom: -2px;
+      padding: 13px 0;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      white-space: nowrap;
+      flex: 1;
+      text-align: center;
+    }
+
+    .rv-tab:hover { color: #1a1208; background: #edf0f4; }
+    .rv-tab--active { color: #1a1208; border-bottom-color: #1a1208; background: #fff; }
+
+    /* ── Panel wrapper ───────────────────────────────────────────── */
+    .rv-panels { width: 100%; }
+
+    .rv-panel { padding: 14px 0 20px; }
+
+    /* ── One-line meta strip ─────────────────────────────────────── */
+    .rv-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 12.5px;
+      color: #64748b;
+    }
+
+    .rv-meta-rec {
+      background: #1a1208;
+      color: #ffd166;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+    }
+
+    .rv-meta-title {
+      font-weight: 700;
+      color: #1a2332;
+      font-size: 13px;
+    }
+
+    .rv-meta-dot { color: #cbd5e1; }
+
+    .rv-meta-desc {
+      color: #64748b;
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .rv-meta-badge {
+      background: #eef6f2;
+      border: 1px solid #b5dece;
+      color: #0f6e56;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ── Document page ───────────────────────────────────────────── */
+    .rv-document {
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.09), 0 0 0 1px rgba(0,0,0,0.05);
+      padding: 48px 56px;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: #1e2a35;
+      white-space: pre-wrap;
+      margin-bottom: 16px;
+    }
+
+    .rv-document .rv-highlight {
+      background: #fef9c3;
+      border-radius: 2px;
+      padding: 0 2px;
+      font-weight: 700;
+      color: #1a1208;
+    }
+
+    .rv-continue-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: #f0fdf4;
+      border: 1.5px solid #b5dece;
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .rv-continue-hint {
+      font-size: 13.5px;
+      color: #0f6e56;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .btn-continue-gaplift {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1208;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-continue-gaplift:hover {
+      background: #1d9e75;
+      transform: translateY(-1px);
+    }
+
+    /* ── Feedback section ───────────────────────────────────────── */
+    .feedback-section {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+    }
+
+    .feedback-card {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 32px 36px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .feedback-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 22px;
+      color: #1a1208;
+      margin-bottom: 6px;
+    }
+
+    .feedback-sub {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      font-size: 36px;
+      color: #d1d5db;
+      cursor: pointer;
+      transition: color 0.15s, transform 0.1s;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .star:hover, .star.active { color: #ffd166; }
+    .star:hover { transform: scale(1.15); }
+
+    .feedback-textarea {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: #1a2332;
+      background: #f8fafd;
+      border: 1.5px solid #cdd6e0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      resize: vertical;
+      min-height: 90px;
+      outline: none;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .feedback-textarea:focus { border-color: #1d9e75; background: #fff; }
+
+    .btn-feedback-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1208;
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 11px 28px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-feedback-submit:hover { background: #1d9e75; }
+
+    .feedback-thankyou {
+      display: none;
+      font-size: 15px;
+      color: #0f6e56;
+      font-weight: 600;
+      padding: 12px;
+    }
+
+    /* ── Resume viewer + feedback: tablet ───────────────────────── */
+    @media (max-width: 768px) {
+      .rv-document { padding: 36px 40px; font-size: 13px; }
+      .rv-tab { font-size: 12.5px; padding: 12px 10px; }
+    }
+
+    /* ── Resume viewer + feedback: mobile ────────────────────────── */
+    @media (max-width: 640px) {
+      /* Tabs */
+      .rv-tabs-bar { position: sticky; top: 0; }
+      .rv-tab { font-size: 11.5px; padding: 11px 6px; letter-spacing: -0.1px; }
+
+      /* Panel */
+      .rv-panel { padding: 10px 0 12px; }
+
+      /* Meta strip */
+      .rv-meta { gap: 4px; margin-bottom: 10px; }
+      .rv-meta-desc { display: none; }
+      .rv-meta-title { font-size: 12px; }
+      .rv-meta-badge { font-size: 10.5px; }
+
+      /* Document page — full bleed on mobile, readable padding */
+      .rv-document {
+        padding: 24px 18px;
+        font-size: 12.5px;
+        line-height: 1.7;
+        border-radius: 4px;
+        box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+      }
+
+      /* Continue bar */
+      .rv-continue-bar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 16px;
+        margin-top: 14px;
+      }
+      .rv-continue-hint { font-size: 13px; }
+      .btn-continue-gaplift {
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+        padding: 13px 20px;
+      }
+
+      /* Feedback */
+      .feedback-section { padding: 0 0 32px; }
+      .feedback-card { padding: 24px 16px; border-radius: 12px; }
+      .feedback-title { font-size: 19px; }
+      .feedback-sub { font-size: 13px; margin-bottom: 18px; }
+      .star { font-size: 30px; }
+      .feedback-textarea { font-size: 16px; }
+      .btn-feedback-submit { width: 100%; justify-content: center; }
+    }
+
+    /* ── Resume viewer + feedback: small phones ──────────────────── */
+    @media (max-width: 420px) {
+      .rv-tab { font-size: 11px; padding: 10px 4px; }
+      .rv-document { padding: 20px 14px; font-size: 12px; line-height: 1.65; }
+      .rv-section-label { font-size: 10px; }
+      .star { font-size: 26px; gap: 4px; }
+    }
+
+    /* ── Output screen ─────────────────────────────────────────── */
+    .output-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .output-header-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #7a8899;
+      margin-bottom: 8px;
+    }
+    .output-header-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e2a35;
+      margin-bottom: 6px;
+    }
+    .output-header-sub {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .resume-versions {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .rv-card {
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+    .rv-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .rv-card--recommended {
+      border-color: rgba(255,209,102,0.6);
+      background: linear-gradient(135deg, #fffdf5 0%, #fff9e6 100%);
+      box-shadow: 0 4px 16px rgba(255,209,102,0.2);
+    }
+
+    .rv-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .rv-title-block { flex: 1; }
+    .rv-recommended-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #1a1208;
+      color: #ffd166;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 6px;
+    }
+    .rv-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e2a35;
+      margin-bottom: 4px;
+    }
+    .rv-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.5;
+    }
+
+    .rv-additions {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #eef6f2;
+      border: 1px solid #b5dece;
+      color: #0f6e56;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 3px 8px;
+      margin-bottom: 14px;
+    }
+
+    .rv-preview {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #334155;
+      max-height: 180px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+      white-space: pre-wrap;
+    }
+    .rv-card--recommended .rv-preview {
+      background: #fffdf5;
+      border-color: #fde68a;
+    }
+    .rv-preview::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 48px;
+      background: linear-gradient(transparent, #f8fafc);
+      pointer-events: none;
+    }
+    .rv-card--recommended .rv-preview::after {
+      background: linear-gradient(transparent, #fffdf5);
+    }
+    .rv-highlight {
+      background: #fef9c3;
+      border-radius: 3px;
+      padding: 0 2px;
+      font-weight: 600;
+      color: #1e2a35;
+    }
+    .rv-card--recommended .rv-highlight {
+      background: #fde68a;
+    }
+
+    .rv-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-rv-copy {
+      flex: 1;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 7px;
+      border: 1.5px solid #d1d5db;
+      background: #fff;
+      color: #374151;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-rv-copy:hover { background: #f3f4f6; border-color: #9ca3af; }
+    .rv-card--recommended .btn-rv-copy {
+      border-color: rgba(255,209,102,0.6);
+      color: #1a1208;
+      background: #fff;
+    }
+    .rv-card--recommended .btn-rv-copy:hover {
+      background: #fffbeb;
+    }
+
+    .rv-download-wrap {
+      position: relative;
+      flex: 1;
+    }
+    .btn-rv-download {
+      width: 100%;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 7px;
+      border: 1.5px solid #1d9e75;
+      background: #1d9e75;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-rv-download:hover { background: #177a5c; border-color: #177a5c; }
+    .rv-card--recommended .btn-rv-download {
+      background: #1a1208;
+      border-color: rgba(255,209,102,0.6);
+    }
+    .rv-card--recommended .btn-rv-download:hover {
+      background: #111008;
+      border-color: #111008;
+    }
+
+    .rv-dropdown {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      overflow: hidden;
+      z-index: 100;
+    }
+    .rv-dropdown.open { display: block; }
+    .rv-dropdown-opt {
+      display: block;
+      width: 100%;
+      padding: 11px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #374151;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.12s;
+    }
+    .rv-dropdown-opt:hover { background: #f3f4f6; }
+    .rv-dropdown-opt + .rv-dropdown-opt {
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Toast */
+    .gaplift-toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1e2a35;
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 11px 22px;
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 9999;
+      white-space: nowrap;
+    }
+    .gaplift-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 600px) {
+      .rv-actions { flex-direction: column; }
+      .rv-download-wrap, .btn-rv-copy { width: 100%; flex: unset; }
+      .rv-dropdown { bottom: unset; top: calc(100% + 6px); }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <span class="logo-icon">&#9998;</span>
+        <span class="logo-text">GapLift</span>
+      </div>
+      <p class="tagline">Know your gap. Own your next move.</p>
+      <div class="header-usp">
+        Stop applying blind &mdash; <strong>see the exact skill gap, close it, and get hired.</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- STEP PROGRESS BAR -->
+    <nav class="steps-nav" aria-label="Form progress">
+      <div class="steps-track">
+
+        <div class="step step--active" id="step-1" data-step="1">
+          <div class="step-circle">
+            <span class="step-num">1</span>
+            <span class="step-check">&#10003;</span>
+          </div>
+          <div class="step-label">
+            <span class="step-title">Your Resume</span>
+            <span class="step-sub">Upload or paste + context</span>
+          </div>
+        </div>
+
+        <div class="step-connector" id="conn-1"></div>
+
+        <div class="step" id="step-2" data-step="2">
+          <div class="step-circle">
+            <span class="step-num">2</span>
+            <span class="step-check">&#10003;</span>
+          </div>
+          <div class="step-label">
+            <span class="step-title">Add the Job</span>
+            <span class="step-sub">URL or paste the JD</span>
+          </div>
+        </div>
+
+        <div class="step-connector" id="conn-2"></div>
+
+        <div class="step" id="step-3" data-step="3">
+          <div class="step-circle">
+            <span class="step-num">3</span>
+            <span class="step-check">&#10003;</span>
+          </div>
+          <div class="step-label">
+            <span class="step-title">Resume Versions</span>
+            <span class="step-sub">Review tailored versions</span>
+          </div>
+        </div>
+
+        <div class="step-connector" id="conn-3"></div>
+
+        <div class="step" id="step-4" data-step="4">
+          <div class="step-circle step-circle--magic">
+            <span class="step-num step-num--ai">AI</span>
+            <span class="step-check">&#10003;</span>
+          </div>
+          <div class="step-label">
+            <span class="step-title step-title--magic">Get GapLift</span>
+            <span class="step-sub">Skill-up roadmap</span>
+          </div>
+        </div>
+
+      </div>
+      <!-- Shown only on mobile — replaces step text labels -->
+      <p class="steps-mobile-label" id="stepsMobileLabel">Step 1 of 4 — Your Resume</p>
+    </nav>
+
+    <form id="analyzeForm" novalidate>
+
+      <!-- SECTION A: About You -->
+      <section class="card wizard-card" id="section-a">
+        <div class="card-step-tag">Step 1 of 4</div>
+        <div class="section-label">Your resume + context</div>
+        <h2 class="section-title">Start with what you have</h2>
+        <p class="section-desc">Paste your resume or upload the file. No formatting needed — raw text works perfectly.</p>
+
+        <!-- Input mode tabs -->
+        <div class="input-tabs" role="tablist">
+          <button type="button" class="input-tab input-tab--active" id="tab-upload" role="tab" aria-selected="true" aria-controls="panel-upload">
+            &#128206; Upload File
+          </button>
+          <button type="button" class="input-tab" id="tab-paste" role="tab" aria-selected="false" aria-controls="panel-paste">
+            &#9998; Paste Text
+          </button>
+        </div>
+
+        <!-- Panel: Upload -->
+        <div class="tab-panel" id="panel-upload" role="tabpanel">
+          <div class="upload-zone" id="uploadZone" tabindex="0" aria-label="Upload resume file">
+            <input type="file" id="resumeFile" name="resumeFile" class="upload-input"
+              accept=".pdf,.doc,.docx,.txt" aria-hidden="true" />
+            <div class="upload-idle" id="uploadIdle">
+              <div class="upload-icon">&#128196;</div>
+              <p class="upload-title">Drag &amp; drop your resume here</p>
+              <p class="upload-sub">or <span class="upload-browse">click to browse</span></p>
+              <p class="upload-formats">Supported: PDF, DOC, DOCX, TXT</p>
+            </div>
+            <div class="upload-preview" id="uploadPreview" style="display:none;">
+              <div class="file-preview-icon" id="fileTypeIcon">&#128196;</div>
+              <div class="file-preview-info">
+                <span class="file-preview-name" id="fileName"></span>
+                <span class="file-preview-size" id="fileSize"></span>
+              </div>
+              <button type="button" class="file-remove-btn" id="removeFile" aria-label="Remove file">&#10005;</button>
+            </div>
+          </div>
+          <div class="char-hint" id="uploadHint"></div>
+        </div>
+
+        <!-- Panel: Paste -->
+        <div class="tab-panel" id="panel-paste" role="tabpanel" style="display:none;">
+          <div class="field-group" style="margin-bottom:0">
+            <label class="field-label" for="resumeText">Paste your resume here</label>
+            <textarea
+              id="resumeText"
+              name="resumeText"
+              class="textarea textarea--large"
+              placeholder="Copy and paste your resume content here..."
+              rows="12"
+            ></textarea>
+            <div class="char-hint" id="resumeHint"></div>
+          </div>
+        </div>
+
+        <div class="auto-advance-hint" id="hintA"></div>
+
+        <!-- AND divider -->
+        <div class="divider">
+          <span class="divider-text">AND</span>
+        </div>
+
+        <!-- Context half -->
+        <div class="section-label" style="margin-top:8px;">Anything else we should know? <span class="optional-badge">Optional</span></div>
+        <p class="section-desc" style="margin-bottom:10px;">Switching careers? Have experience that's not on your resume? Add it here — GapLift factors it in.</p>
+        <div class="field-group" style="margin-bottom:0">
+          <textarea
+            id="extraContext"
+            name="extraContext"
+            class="textarea textarea--medium"
+            placeholder="e.g. I have 3 years of ops experience but want to move into product. My resume doesn't reflect this transition yet."
+            rows="5"
+          ></textarea>
+        </div>
+
+      </section>
+
+      <!-- SECTION B: Add the Job -->
+      <section class="card wizard-card wizard-card--hidden" id="section-b">
+        <div class="card-step-tag">Step 2 of 4</div>
+        <div class="section-label">Add the job</div>
+        <h2 class="section-title">Add the job</h2>
+        <p class="section-desc">Give the AI the job posting — via URL or by pasting the description directly.</p>
+
+        <div class="field-group">
+          <label class="field-label" for="jobUrl">Paste the job posting URL</label>
+          <input
+            type="url"
+            id="jobUrl"
+            name="jobUrl"
+            class="input"
+            placeholder="https://www.naukri.com/job-listings-..."
+          />
+          <span class="field-hint">Works with Naukri, IIM Jobs, LinkedIn, or any job site URL</span>
+        </div>
+
+        <div class="divider">
+          <span class="divider-text">OR</span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="jobDescription">Paste the job description</label>
+          <textarea
+            id="jobDescription"
+            name="jobDescription"
+            class="textarea textarea--large"
+            placeholder="If the URL doesn't work, paste the job description text here..."
+            rows="10"
+          ></textarea>
+        </div>
+
+        <div class="card-nav">
+          <button type="button" class="btn-back" id="backToA">
+            <span class="nav-arrow">&#8592;</span> Back
+          </button>
+          <button type="submit" class="btn-analyze" id="analyzeBtn">
+            <span class="btn-icon">&#10024;</span> Analyze &amp; Generate My Resume
+          </button>
+        </div>
+        <p class="cta-note" style="margin-top:12px; text-align:right;">
+          Claude AI will generate 3 tailored resume versions with suggested additions highlighted
+        </p>
+      </section>
+
+    </form>
+
+    <!-- OUTPUT AREA — hidden until results load -->
+    <section class="output-area" id="outputArea" style="display:none;"></section>
+
+    <!-- MAGIC STEP: Skills to Learn -->
+    <section class="magic-section" id="magicSection" style="display:none;" aria-label="Magic Step: Skills to Learn">
+      <div class="magic-header">
+        <div class="magic-header-left">
+          <span class="magic-badge">&#10024; Magic Step</span>
+          <h2 class="magic-title">Skills to Level Up Your Profile</h2>
+          <p class="magic-desc">
+            Based on your resume and the job requirements, here are the skills that will make the biggest difference.
+            These are gaps the AI identified — close them to stand out.
+          </p>
+        </div>
+      </div>
+
+      <div class="magic-columns">
+
+        <!-- Technical Skills -->
+        <div class="magic-col" id="techSkillsCol">
+          <div class="magic-col-header magic-col-header--tech">
+            <span class="magic-col-icon">&#128187;</span>
+            <h3 class="magic-col-title">Technical Skills</h3>
+            <span class="magic-col-count" id="techCount">0</span>
+          </div>
+          <ul class="skill-list" id="techSkillList"></ul>
+        </div>
+
+        <!-- Non-Technical Skills -->
+        <div class="magic-col" id="softSkillsCol">
+          <div class="magic-col-header magic-col-header--soft">
+            <span class="magic-col-icon">&#129504;</span>
+            <h3 class="magic-col-title">Non-Technical Skills</h3>
+            <span class="magic-col-count" id="softCount">0</span>
+          </div>
+          <ul class="skill-list" id="softSkillList"></ul>
+        </div>
+
+      </div>
+
+      <div class="magic-footer">
+        <p class="magic-footer-note">
+          &#128161; These are suggestions based on the job description gap analysis. Prioritise <strong>High</strong> items first — they directly match what the role demands.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FEEDBACK SECTION — shown after step 4 -->
+  <section class="feedback-section" id="feedbackSection" style="display:none">
+    <div class="feedback-card">
+      <div class="feedback-title">How was your experience?</div>
+      <p class="feedback-sub">Takes 10 seconds. Helps us make GapLift better for everyone.</p>
+      <div class="star-rating" id="starRating">
+        <span class="star" data-val="1">&#9733;</span>
+        <span class="star" data-val="2">&#9733;</span>
+        <span class="star" data-val="3">&#9733;</span>
+        <span class="star" data-val="4">&#9733;</span>
+        <span class="star" data-val="5">&#9733;</span>
+      </div>
+      <textarea class="feedback-textarea" id="feedbackText" placeholder="What worked well? What could be better?"></textarea>
+      <br>
+      <button class="btn-feedback-submit" onclick="submitFeedback()">Send feedback &#10003;</button>
+      <p class="feedback-thankyou" id="feedbackThankyou">Thank you! Your feedback means a lot. &#128591;</p>
+    </div>
+  </section>
+
+  <section class="marketing-section">
+    <div class="ms-card">
+
+      <div class="ms-top-accent"></div>
+
+      <div class="ms-main">
+
+        <div class="ms-tag-row">
+          <span class="ms-tag">Resume Analyzer · Claude AI</span>
+          <div class="ms-tag-line"></div>
+        </div>
+
+        <div class="ms-headline">
+          Stop applying blind.<br>
+          <span class="ms-hl">See the gap.</span> <em>Close it.</em>
+        </div>
+
+        <div class="ms-deck">
+          Your resume isn't the problem. The mismatch between
+          it and the job description is. This tool reads both,
+          tells you <strong>exactly what's missing</strong>,
+          and hands you three upgraded resumes — with every
+          change highlighted — so you know what to fix and
+          what to learn next.
+        </div>
+
+        <div class="ms-usp-banner">
+          <div class="ms-usp-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.4 7.6L18.5 8.4L14 12.8L15.3 19L10 16.1L4.7 19L6 12.8L1.5 8.4L7.6 7.6L10 2Z"
+                fill="#ffd166" stroke="#ffd166" stroke-width="0.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ms-usp-label">Your unfair advantage</div>
+            <div class="ms-usp-line">
+              Know the <em>exact</em> skill gap.
+              Close it. Get hired.
+            </div>
+          </div>
+        </div>
+
+        <div class="ms-steps-label">How it works — 4 steps</div>
+
+        <div class="ms-steps">
+
+          <div class="ms-step">
+            <div class="ms-step-num">1</div>
+            <div>
+              <div class="ms-step-title">Your Resume — Upload or paste + context</div>
+              <div class="ms-step-desc">Upload a file or paste your resume text.
+                Add any extra context — career switch, unlisted experience —
+                to sharpen the output.</div>
+            </div>
+          </div>
+
+          <div class="ms-step">
+            <div class="ms-step-num">2</div>
+            <div>
+              <div class="ms-step-title">Add the Job — URL or paste the job description</div>
+              <div class="ms-step-desc">Paste any URL — Naukri,
+                IIM Jobs, LinkedIn Jobs, or any site. Or paste the
+                job description directly if you prefer.</div>
+            </div>
+          </div>
+
+          <div class="ms-step">
+            <div class="ms-step-num">3</div>
+            <div>
+              <div class="ms-step-title">Resume Versions — Review 3 tailored versions</div>
+              <div class="ms-step-desc">Get three upgraded
+                versions — technical, leadership, and balanced.
+                Every suggested addition is highlighted so you
+                stay in full control of what goes in.</div>
+            </div>
+          </div>
+
+          <div class="ms-step">
+            <div class="ms-step-num">4</div>
+            <div>
+              <div class="ms-step-title">Get GapLift — Your skill-up roadmap</div>
+              <div class="ms-step-desc">You know which version
+                to send. You know which skills to build next.
+                Your resume is ready — and so is your roadmap
+                to the job you actually want.</div>
+              <span class="ms-step-tag">
+                You're done guessing. Start closing.
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="ms-bottom-bar">
+        <div class="ms-bottom-left">
+          Built for India's<br>
+          <em>ambitious job seekers.</em>
+        </div>
+        <a href="#analyzeForm" class="ms-cta-btn">Analyze My Resume &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Built with Claude AI &bull; Resume analysis powered by Anthropic</p>
+      <p style="margin-top:6px;">Reach out for further enhancements &mdash; <a href="https://www.linkedin.com/in/gunjanmaheshwariblr/" target="_blank" rel="noopener noreferrer" style="color:#1d9e75;text-decoration:none;font-weight:600;">linkedin.com/in/gunjanmaheshwariblr</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
