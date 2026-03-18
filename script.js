@@ -119,19 +119,84 @@ form.addEventListener('submit', (e) => {
     extraContext:    document.getElementById('extraContext').value.trim(),
   };
 
-  console.log('Form data ready for API:', {
-    ...payload,
-    resumeFile: payload.resumeFile
-      ? `${payload.resumeFile.name} (${formatBytes(payload.resumeFile.size)})`
-      : null,
-  });
-
   // Hide the form, show loading
   document.getElementById('section-b').classList.add('wizard-card--hidden');
   setStep(3);
   setLoadingState(true);
-  simulatePlaceholderResponse(); // TODO: replace with Claude API call
+  callClaudeAPI(payload);
 });
+
+// ── Real Claude API call ───────────────────────────────────────
+async function callClaudeAPI(payload) {
+  try {
+    // Read resume text from file if uploaded
+    let resumeText = payload.resumeText;
+    if (payload.resumeMode === 'upload' && payload.resumeFile) {
+      resumeText = await readFileAsText(payload.resumeFile);
+    }
+
+    const response = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        resumeText,
+        jobDescription: payload.jobDescription,
+        jobUrl: payload.jobUrl,
+        extraContext: payload.extraContext,
+      }),
+    });
+
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error || 'API request failed');
+    }
+
+    const data = await response.json();
+
+    // Replace placeholder data with real API response
+    RESUME_VERSIONS.length = 0;
+    data.versions.forEach(v => RESUME_VERSIONS.push(v));
+
+    // Replace skills with real data
+    SAMPLE_TECH_SKILLS.length = 0;
+    data.techSkills.forEach(s => SAMPLE_TECH_SKILLS.push(s));
+
+    SAMPLE_SOFT_SKILLS.length = 0;
+    data.softSkills.forEach(s => SAMPLE_SOFT_SKILLS.push(s));
+
+    // Show output
+    setLoadingState(false);
+    setStep(3);
+    outputArea.classList.add('active');
+    outputArea.innerHTML = buildOutputHTML();
+    switchResumeTab(RESUME_VERSIONS[0].id);
+    outputArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  } catch (err) {
+    setLoadingState(false);
+    outputArea.style.display = '';
+    outputArea.innerHTML = `
+      <div class="output-placeholder" style="border: 2px solid #e74c3c; padding: 32px; border-radius: 12px; text-align: center;">
+        <div class="output-icon">⚠️</div>
+        <p class="output-placeholder-title" style="color:#e74c3c;">Something went wrong</p>
+        <p class="output-placeholder-sub">${err.message}</p>
+        <button onclick="location.reload()" style="margin-top:16px; padding:10px 20px; background:#1d9e75; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:14px;">Try Again</button>
+      </div>`;
+    document.getElementById('section-b').classList.remove('wizard-card--hidden');
+    setStep(2);
+    console.error('GapLift API error:', err);
+  }
+}
+
+// ── Read uploaded file as plain text ──────────────────────────
+function readFileAsText(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.onerror = () => reject(new Error('Could not read file'));
+    reader.readAsText(file);
+  });
+}
 
 // ── Tab switching (Upload / Paste) ────────────────────────────
 function switchTab(mode) {
